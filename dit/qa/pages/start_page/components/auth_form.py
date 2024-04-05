@@ -9,12 +9,12 @@ __all__ = ['AuthForm']
 
 
 class AuthFormWrapper(ComponentWrapper):
-    title = Text(xpath='//h2[text()="Авторизация"]')
+    title = Text(class_name='custom-modal__title')
     login = TextField(id="username")
     password = TextField(id="password")
-    forgot_password = Button(css='[class*="restore_open"] ')
+    forgot_password = Button(class_name="restore_open")
     submit = Button(id="kc-login")
-    close_btn = Button(css='[class*="closeBtn"]')
+    cancel = Button(css='[class*="closeBtn"]')
 
     def wait_for_loading(self) -> None:
         def condition() -> bool:
@@ -25,7 +25,7 @@ class AuthFormWrapper(ComponentWrapper):
                 assert self.forgot_password.visible
                 assert self.submit.visible
 
-                return self.close_btn.visible
+                return self.cancel.visible
 
             except NoSuchElementException:
 

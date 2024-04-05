@@ -59,7 +59,7 @@ target-version = ['py310']
 
 [tool.isort]
 default_section = 'THIRDPARTY'
-known_third_party = ["uid"]
+known_third_party = ["oasi"]
 known_application_apps = ['dit', 'tests']
 sections = ['FUTURE', 'STDLIB', 'THIRDPARTY', 'APPLICATION_APPS', 'LOCALFOLDER']
 line_length = 120

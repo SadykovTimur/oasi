@@ -28,7 +28,7 @@ def open_auth_form(app: Application) -> None:
     with allure.step('Opening Auth form'):
         try:
             page = StartPage(app)
-            page.header.login.click()
+            page.login.click()
             page.auth_form.wait_for_loading()
 
             screenshot_attach(app, 'auth_form')
@@ -70,11 +70,11 @@ def open_main_page(app: Application) -> None:
 def open_registry_page(app: Application) -> None:
     with allure.step('Opening Registry page'):
         try:
-            MainPage(app).sidebar_menu.item_information.click()
-            MainPage(app).sidebar_menu.registry.click()
+            page = MainPage(app)
+            page.sidebar.item_information.click()
+            page.sidebar.registry.click()
+
             RegistryPage(app).wait_for_loading()
-            RegistryPage(app).favorites_bnt.click()
-            RegistryPage(app).wait_for_loading_table_favorites()
 
             screenshot_attach(app, 'registry_page')
         except Exception as e:
@@ -86,7 +86,7 @@ def open_registry_page(app: Application) -> None:
 def logout(app: Application) -> None:
     with allure.step('Logging out'):
         try:
-            MainPage(app).skeleton_content.exit.click()
+            MainPage(app).exit.click()
 
             StartPage(app).wait_for_loading_after_logout()
 
